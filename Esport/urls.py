@@ -14,14 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from gestionResgistroUsuarios.views import home, contacto, servicios, tienda, blog
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("home/", home, name="Home"),
-    path("contacto/", contacto, name="Contacto"),
-    path("servicios/", servicios, name="Servicios"),
-    path("blog/", blog, name="Blog"),
-    path("tienda/", tienda, name="Tienda"),
+    path("", include("gestionResgistroUsuarios.urls")),#Aqui se han traido todas las vistas enlazadas desde el urls de la app
 ]
