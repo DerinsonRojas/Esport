@@ -9,10 +9,11 @@ Hata ahora se ha desarrollado el proyecto con:
 -Instalar el gestor de base de datos PostgreSQL: Se recomienda usar como contraseña al momento de la instalación, possql
 para evitar incompatibilidad con este proyecto en específico
 
-Además es necesario desde el directorio del proyecto instalar la librería psycopg2,
+-Además es necesario desde el directorio del proyecto instalar la librería psycopg2,
 en la terminal y en el directorio introducir del proyecto introducir la siguiente instrucción,     pip install psycopg2 
 para que funcione la base de datos PostgreSQL
     
+-Para buen funcionamiento de la carga de imagenes en nuevas APIS instalar en la terminal pip install Pillow
 
 Para inicializar el servidor en la terminal y desde el directorio principal 
 del proyecto se utiliza la instrucción python manage.py runserver, el proyecto sera accesible desde 
