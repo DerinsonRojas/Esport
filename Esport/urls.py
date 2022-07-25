@@ -19,4 +19,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("gestionResgistroUsuarios.urls")),#Aqui se han traido todas las vistas enlazadas desde el urls de la app
+    
 ]
