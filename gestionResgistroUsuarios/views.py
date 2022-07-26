@@ -10,9 +10,6 @@ def tienda(request):
 
     return render(request, "gestionResgistroUsuarios/tienda.html")
 
-def blog(request):
-
-    return render(request, "gestionResgistroUsuarios/blog.html")
 
 def contacto(request):
 
