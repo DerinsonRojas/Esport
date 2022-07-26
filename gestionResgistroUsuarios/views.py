@@ -1,12 +1,10 @@
 from django.shortcuts import render, HttpResponse
 
+
+
 def home(request):
 
     return render(request, "gestionResgistroUsuarios/home.html")
-
-def servicios(request):
-
-    return render(request, "gestionResgistroUsuarios/servicios.html")
 
 def tienda(request):
 
