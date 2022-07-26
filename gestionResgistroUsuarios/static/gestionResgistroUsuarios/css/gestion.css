@@ -29,6 +29,7 @@ p {
   text-transform: uppercase;
   line-height: 1;
   font-family: 'Raleway';
+  /*color: blue !important; Si se desean hacer modificaciones seguir este patron*/
 }
 
 .site-heading .site-heading-upper {
@@ -277,3 +278,15 @@ ul.errorlist{
   font-style: italic;
   color: red;
 }
+
+.linksCategorias{/*Aqui anadimos el estilo a los links de categorias en blog*/
+  color: white !important;
+
+  text-decoration: underline;
+  
+}
+.linksCategorias:hover{
+  text-decoration: none;
+
+}
+
