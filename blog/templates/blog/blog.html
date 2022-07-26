@@ -3,7 +3,19 @@
 {% load static %}
 
 {% block content %}
+<section><!-- Este sección muestra las categorías debajo del menú -->
+    <div style="width:75%; margin: auto; color: rgb(191, 202, 199); text-align: center;">
+        Categorías: 
+        {% for post in posts %}
+            {% for categoria in post.categorias.all %}
 
+        {{categoria.nombre}}&nbsp; &nbsp;
+
+            {% endfor %}
+        {% endfor %}
+
+    </div>
+</section>
 
     {% for post in posts %}
 
@@ -15,10 +27,17 @@
               <h2 class="section-heading mb-4" >
                 <span class="section-heading-lower">{{post.titulo}}</span>
                 <span class="section-heading-upper">{{post.contenido}}</span>
-                <span class="section-heading-upper">Autor:{{post.autor}}</span>
                                 
               </h2>
-              
+                <div style="text-align: left; font-size: 0.9em;">
+                    Autor: {{post.autor}}<br>
+
+                    {% for categoria in post.categorias.all %}
+
+                        Categoría: {{categoria.nombre}}
+
+                    {% endfor %}
+                 </div>
             </div>
           </div>
         </div>
@@ -34,5 +53,7 @@
 </p></div>
 -->
     {% endfor %}
+
+
 
 {% endblock %}
