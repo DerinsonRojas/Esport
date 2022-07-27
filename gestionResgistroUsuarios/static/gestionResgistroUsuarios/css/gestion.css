@@ -278,7 +278,7 @@ ul.errorlist{
   font-style: italic;
   color: red;
 }
-
+/*Estilos de clase creados por el desarrollador para el menu de categorias*/
 .linksCategorias{/*Aqui anadimos el estilo a los links de categorias en blog*/
   color: white !important;
 
@@ -289,4 +289,12 @@ ul.errorlist{
   text-decoration: none;
 
 }
+/*Estilos de clase creados por el desarrollador para el menu de categorias*/
 
+.contenedorFormulario{
+  background-color: rgba(24, 64, 8, 0.8) !important;
+  width: 50%;
+  margin:10px auto;
+  border-radius: 5px;
+  padding: 5px 0px;
+} 
