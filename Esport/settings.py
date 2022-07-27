@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'gestionResgistroUsuarios',
     'serviciosapp',
     'blog',
+    'contacto',
 ]
 
 MIDDLEWARE = [

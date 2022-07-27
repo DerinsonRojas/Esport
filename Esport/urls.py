@@ -21,5 +21,6 @@ urlpatterns = [
     path("", include("gestionResgistroUsuarios.urls")),#Aqui se han traido todas las vistas enlazadas desde el urls de la app
     path ('servicios/', include('serviciosapp.urls')),
     path ('blog/', include('blog.urls')),
+    path ('contacto/', include('contacto.urls')),
 
 ]
