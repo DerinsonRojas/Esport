@@ -16,4 +16,13 @@ def categoria(request, categoria_id):
 
     return render(request, "blog/categoria.html",{'categoria':categoria,'posts':posts})
 
+def entrada(request):
+
+    posts=Post.objects.all()
+
+
+
+
+    return render(request, "blog/entrada.html")
+
 # Create your views here.
