@@ -27,6 +27,7 @@
               <h2 class="section-heading mb-4" >
                 <span class="section-heading-lower">{{post.titulo}}</span>
                 <span class="section-heading-upper">{{post.contenido}}</span>
+                
                                 
               </h2>
                 <div style="text-align: left; font-size: 0.9em;">
@@ -35,6 +36,8 @@
                     {% for categoria in post.categorias.all %}
 
                         Categoría: {{categoria.nombre}}
+
+                        
 
                     {% endfor %}
                  </div>
