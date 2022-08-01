@@ -16,4 +16,12 @@ def categoria(request, categoria_id):
 
     return render(request, "blog/categoria.html",{'categoria':categoria,'posts':posts})
 
+def entrada(request, post_id):
+
+    posts=Post.objects.get(id=post_id)
+
+    entrada=Post.objects.filter(id=post_id)
+
+    return render(request, "blog/entrada.html",{entrada:'entrada','posts':posts})
+
 # Create your views here.

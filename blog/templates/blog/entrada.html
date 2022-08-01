@@ -1,0 +1,49 @@
+{% extends "gestionResgistroUsuarios/base.html" %}
+
+{% load static %}
+
+{% block content %}
+<!-- Este sección muestra las categorías debajo del menú -->
+  <section><!-- Este sección muestra las categorías debajo del menú -->
+    <div style="width:75%; margin: auto; color: rgb(191, 202, 199); text-align: center;">
+        Categorías: 
+            {% for categoria in posts.categorias.all %}
+
+        {{categoria.nombre}}&nbsp; &nbsp;
+
+        {% endfor %}
+
+    </div>
+</section>
+
+
+    <section class="page-section clearfix">
+        <div class="container">
+          <div class="intro">
+            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{posts.imagen.url}}" alt="" style="width: 40%;">
+            <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+              <h2 class="section-heading mb-4" >
+                <span class="section-heading-lower">{{posts.titulo}}</span>
+                <span class="section-heading-upper">{{posts.contenido}}</span>
+                
+                                
+              </h2>
+              
+              <div style="text-align: left; font-size: 0.9em;">
+                Autor: {{posts.autor}}<br>
+
+             </div>
+                 
+            </div>
+          </div>
+        </div>
+      </section>
+<!-- Este scrip sirve para hacer pruebas
+<div><p>
+  <h2 style="color:white;">{{posts.titulo}}</h2>
+  <p style="color:white;">{{posts.contenido}}</p>
+  <p> <img src="{{post.imagen.url}}"> </p>
+
+</p></div>
+-->
+{% endblock %}
