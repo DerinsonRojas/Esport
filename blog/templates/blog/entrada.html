@@ -20,11 +20,12 @@
     <section class="page-section clearfix">
         <div class="container">
           <div class="intro">
-            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{posts.imagen.url}}" alt="" style="width: 40%;">
+           
+            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{posts.imagen.url}}" alt="" style="width: 20%;">
             <div class="intro-text left-0 text-center bg-faded p-5 rounded">
               <h2 class="section-heading mb-4" >
                 <span class="section-heading-lower">{{posts.titulo}}</span>
-                <span class="section-heading-upper">{{posts.contenido}}</span>
+                <span class="section-heading-upper">{{posts.descripcion}}</span>
                 
                                 
               </h2>
@@ -32,11 +33,19 @@
               <div style="text-align: left; font-size: 0.9em;">
                 Autor: {{posts.autor}}<br>
 
-             </div>
-                 
+              </div>
+            
             </div>
+            
           </div>
+          
         </div>
+     </section>
+
+     <section class="page-section clearfix">  
+        <div class="container">
+           <p style="color:aliceblue"> {{posts.contenido}}</p>
+        </div> 
       </section>
 <!-- Este scrip sirve para hacer pruebas
 <div><p>

@@ -27,8 +27,8 @@
             <div class="intro-text left-0 text-center bg-faded p-5 rounded">
               <h2 class="section-heading mb-4" >
                 <span class="section-heading-lower">{{post.titulo}}</span>
-                <span class="section-heading-upper">{{post.contenido}}</span>
-                <a href="{% url 'valordelnameentrada' post.id  %}"><span class="linksCategorias" style="font-size: 30px;">Leer</span></a>
+                <span class="section-heading-upper">{{post.descripcion}}</span>
+                <a href="{% url 'valordelnameentrada' post.id  %}"><span class="linksCategorias" style="font-size: 20px;">Play</span></a>
                            
               </h2>
                 <div style="text-align: left; font-size: 0.9em;">
@@ -37,7 +37,7 @@
                     {% for categoria in post.categorias.all %}
 
                         Categoría: {{categoria.nombre}}<br>
-                        <!--Id:{{post.id}}-->
+                       
 
                     {% endfor %}
                  </div>
