@@ -6,9 +6,6 @@ def home(request):
 
     return render(request, "gestionResgistroUsuarios/home.html")
 
-def tienda(request):
-
-    return render(request, "gestionResgistroUsuarios/tienda.html")
 
 
 
