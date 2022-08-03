@@ -5,9 +5,28 @@
 {% block content %}
 
 
+<div class="row">
 
-Desarrollar el codigo de Tienda online en esta zona
+{% for producto in productos %}
+
+    <div class="card"  style="width:10%;">
+
+        <img src="{{producto.imagen.url}}">
+        <div>{{producto.nombre}}</div>
+        <div>{{producto.precio}}€</div>
 
 
+
+
+
+
+    </div>
+
+
+
+
+{% endfor %}
+
+</div>
 
 {% endblock %}
