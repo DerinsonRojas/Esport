@@ -7,15 +7,16 @@
 {% block content %}
 
 
-<form methon="post" action="" style="color:aliceblue">
+<form method="POST" action="" style="color:aliceblue">
 
     {% csrf_token %}
+
 
     <div style='width:50%; margin: auto;'>
 
     {{form|crispy}}
 
-        <button type="submit" class="btn btn-success">Regístrate</button>
+    <button type="submit" class="btn btn-success">Regístrate</button>
     </div>
 </form>
 
