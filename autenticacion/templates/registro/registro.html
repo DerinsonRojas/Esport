@@ -1,0 +1,19 @@
+{% extends "gestionResgistroUsuarios/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+
+<form methon="post" action="" style="color:aliceblue">
+
+    {% csrf_token %}
+
+    {{form}}
+
+    <button type="submit" class="btn btn-success">Regístrate</button>
+
+</form>
+
+
+{% endblock %}

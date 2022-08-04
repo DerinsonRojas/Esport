@@ -1,8 +1,17 @@
 from django.shortcuts import render
-from serviciosapp.models import Servicio
+from django.views.generic import View
+from django.contrib.auth.forms import UserCreationForm
 
-def autenticacion(request):
+class VRegistro(View):
 
-    return render(request, 'autenticacion/autenticacion.html')
+    def get(self, request):
+        form=UserCreationForm()
+        return render(request, 'registro/registro.html', {'form':form})
+
+    def post(self, requesst):
+        pass
+
+
+
 
 # Create your views here.
