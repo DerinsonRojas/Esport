@@ -28,7 +28,7 @@
       Hola {{user.username}}&nbsp;&nbsp;<a style="color:white; " href="{% url 'cerrar_sesion' %}">Cerrar sesión</a>
 
     {% else %}
-      Hola invitado!&nbsp;&nbsp;<a style="color:white; " href="#">Login</a> &nbsp; <a style="color:white; " href="{% url 'Autenticacion' %}"> Registrate</a>
+      Hola invitado!&nbsp;&nbsp;<a style="color:white; " href="{% url 'logear' %}">Login</a> &nbsp; <a style="color:white; " href="{% url 'Autenticacion' %}"> Registrate</a>
     {% endif %}
 
 
