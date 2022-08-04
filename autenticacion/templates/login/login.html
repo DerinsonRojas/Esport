@@ -14,6 +14,20 @@
 
     <div style='width:50%; margin: auto;'>
 
+        {% if messages %}
+            {% for mensaje in messages %}
+
+                <span class="alert alert-{{mensaje.tags}}">
+
+                {{mensaje}}
+
+                </span>
+
+            {% endfor %}
+
+        {% endif %}
+        <br/><br/>
+        <br/><br/>
     {{form|crispy}}
 
     <button type="submit" class="btn btn-success">Login</button>
