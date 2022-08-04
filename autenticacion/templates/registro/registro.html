@@ -2,6 +2,8 @@
 
 {% load static %}
 
+{% load crispy_forms_tags %}
+
 {% block content %}
 
 
@@ -9,10 +11,12 @@
 
     {% csrf_token %}
 
-    {{form}}
+    <div style='width:50%; margin: auto;'>
 
-    <button type="submit" class="btn btn-success">Regístrate</button>
+    {{form|crispy}}
 
+        <button type="submit" class="btn btn-success">Regístrate</button>
+    </div>
 </form>
 
 
