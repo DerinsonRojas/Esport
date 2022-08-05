@@ -23,7 +23,17 @@
       
         <span class="site-heading-lower">ESPORT SITE</span>
       </h1>
+  <div style="color:white; text-align: right; margin-right: 100px;">
+    {% if user.is_authenticated %}
+      Hola {{user.username}}&nbsp;&nbsp;<a style="color:white; " href="{% url 'cerrar_sesion' %}">Cerrar sesión</a>
 
+    {% else %}
+      Hola invitado!&nbsp;&nbsp;<a style="color:white; " href="{% url 'logear' %}">Login</a> &nbsp; <a style="color:white; " href="{% url 'Autenticacion' %}"> Registrate</a>
+    {% endif %}
+
+
+
+  </div>
 
  <!-- Navbar -->
  <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">

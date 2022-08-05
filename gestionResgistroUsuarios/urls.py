@@ -4,7 +4,7 @@ from gestionResgistroUsuarios.views import home
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path("home/", home, name="Home"),
+    path("", home, name="Home"),
 ]
 
 urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
