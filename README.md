@@ -9,6 +9,8 @@ Hata ahora se ha desarrollado el proyecto con:
 - La base de datos usada es SQL3 y viene integrada por defecto en Django por lo que no deberá instalar nada respecto a BBDD
 
 -Para el buen funcionamiento de la carga de imagenes en nuevas APIS instalar en la terminal, pip install Pillow
+-Instala pip install django-crispy-forms para el correcto funcionamiento de los formularios 
+-Instalar pip install python-decouple para las variables de entorno
 
 Para inicializar el servidor en la terminal y desde el directorio principal 
 del proyecto se utiliza la instrucción python manage.py runserver, el proyecto sera accesible desde 
