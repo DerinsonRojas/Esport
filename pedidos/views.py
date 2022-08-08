@@ -25,6 +25,8 @@ def procesar_pedidos(request):
             pedido=pedido
         ))
 
+    
+
     LinePedido.objects.bulk_create(lineas_pedido)
 
     #Llamada a funcion
@@ -36,8 +38,8 @@ def procesar_pedidos(request):
         emailusuario=request.user.email
     )
 
-
     messages.success(request, 'El pedido ha sido agregado con éxito')
+    
 
     return redirect('../tienda')
 
