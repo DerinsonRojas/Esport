@@ -8,7 +8,11 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
+
 """
+import os
+
+from django.contrib.messages import constants as mensajes_de_error
 
 from pathlib import Path
 
@@ -44,6 +48,11 @@ INSTALLED_APPS = [
     'serviciosapp',
     'blog',
     'contacto',
+    'tienda',
+    'carro',
+    'autenticacion',
+    'crispy_forms',
+    'pedidos',
 ]
 
 MIDDLEWARE = [
@@ -69,7 +78,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                
+                'carro.context_processor.importe_total_carro',
+                                
             ],
         },
     },
@@ -123,7 +133,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
-import os
+
 STATIC_URL = '/static/'
 
 MEDIA_URL='/media/'
@@ -144,4 +154,18 @@ EMAIL_USE_TLS=True
 EMAIL_PORT=587
 EMAIL_HOST_USER=config("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD=config("EMAIL_HOST_PASSWORD")
+
+#Cargar paquete crispy
+
+CRISPY_TEMPLATE_PACK='bootstrap4'
+
+#Cargar mensajes de error
+
+MESSAGE_TAGS={
+    mensajes_de_error.DEBUG: 'debug',
+    mensajes_de_error.INFO: 'info',
+    mensajes_de_error.SUCCESS: 'success',
+    mensajes_de_error.WARNING:'warning',
+    mensajes_de_error.ERROR: 'danger',
+}
 
