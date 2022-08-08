@@ -5,7 +5,7 @@ from django.db.models import F, Sum, FloatField
 
 # Create your models here.
 
-User=get_user_model
+User=get_user_model()
 
 class Pedido(models.Model):
 
@@ -25,11 +25,11 @@ class Pedido(models.Model):
         
 
     class Meta:
-        de_table='pedidos'
+        db_table='pedidos'
 
         verbose_name='pedido'
 
-        verbose_name_plura='pedidos'
+        verbose_name_plural='pedidos'
 
         ordering=['id']
 
@@ -48,11 +48,11 @@ class LinePedido(models.Model):
         return f'{self.cantidad} unidades de {self.producto_id.nombre}'
 
     class Meta:
-        de_table='lineapedidos'
+        db_table='lineapedidos'
 
         verbose_name='Línea Pedido'
 
-        verbose_name_plura='Líneas Pedidos'
+        verbose_name_plural='Líneas Pedidos'
 
         ordering=['id']
 

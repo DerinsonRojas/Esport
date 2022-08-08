@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'carro',
     'autenticacion',
     'crispy_forms',
+    'pedidos',
 ]
 
 MIDDLEWARE = [
