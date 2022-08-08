@@ -97,6 +97,7 @@ p {
 #mainNav .navbar-nav .nav-item.active .nav-link {
   color: #ffffff;
   text-decoration: underline;
+  position: absolute;
 }
 
 @media (min-width: 992px) {
