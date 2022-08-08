@@ -1,0 +1,25 @@
+{% extends "gestionResgistroUsuarios/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="contenedorFormulario">
+
+    {% if "valido" in request.GET %}
+
+    <p style="color:aliceblue">Información enviada correctamente</p>
+
+
+    {% endif %}
+
+    <form action="" method="POST" style="text-align: center;">
+        {% csrf_token %}<!--Toque csrf para activar la seguridad en los formularios-->
+    <table style="color:azure; margin: 20px auto;">{{miFormulario.as_table}}</table>
+    <input type="submit" value="Enviar" style="width: 150px">
+    </form>
+
+</div>
+
+<!--{{request.POST}}  Esto solo se usa para verificar que la información va a un diccionario-->
+{% endblock %}
