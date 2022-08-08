@@ -47,16 +47,12 @@ INSTALLED_APPS = [
     'gestionResgistroUsuarios',
     'serviciosapp',
     'blog',
-<<<<<<< HEAD
-    #'contacto',
-=======
     'contacto',
     'tienda',
     'carro',
     'autenticacion',
     'crispy_forms',
     'pedidos',
->>>>>>> develop
 ]
 
 MIDDLEWARE = [
