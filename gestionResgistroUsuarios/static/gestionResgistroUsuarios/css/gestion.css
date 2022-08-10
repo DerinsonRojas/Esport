@@ -81,7 +81,7 @@ p {
 }
 
 #mainNav {
-  background-color: rgba(24, 64, 8);
+  background-color: #3f5aa5;
   font-family: 'Raleway';
 }
 
@@ -135,7 +135,7 @@ p {
     left: 600;
     width: 60%;
     margin-top: 3rem;
-    background-color: rgba(24, 64, 8);
+    background-color: #3f5aa5;
     color: cornsilk;
     position: absolute;
   }
@@ -163,7 +163,7 @@ p {
   position: relative;
   padding: 3rem;
   margin: 0.5rem;
-  background-color: rgba(24, 64, 8);
+  background-color: #3f5aa5;
   color: cornsilk;
 }
 
@@ -230,7 +230,7 @@ p {
 }
 
 .footer {
-   background-color: rgba(24, 64, 8, 0.8);
+   background-color: #3f5aa5;
 }
 
 
@@ -292,7 +292,7 @@ ul.errorlist{
 /*Estilos de clase creados por el desarrollador para el menu de categorias*/
 
 .contenedorFormulario{
-  background-color: rgba(24, 64, 8, 0.8) !important;
+  background-color: #3f5aa5 !important;
   width: 50%;
   margin:10px auto;
   border-radius: 5px;
