@@ -3,7 +3,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from django.template.loader import render_to_string
 from carro.carro import Carro
-from pedidos.models import LinePedido, Pedido
+from pedidos.models import Pedido,  LineaPedido
 from django.contrib import messages
 from django.utils.html import strip_tags
 from django.core.mail import send_mail
@@ -17,7 +17,7 @@ def procesar_pedidos(request):
 
     lineas_pedido=list()
     for key, value in carro.carro.items():
-        lineas_pedido.append(LinePedido(
+        lineas_pedido.append(LineaPedido(
 
             producto_id=key,
             cantidad=value['cantidad'],
@@ -27,7 +27,7 @@ def procesar_pedidos(request):
 
     
 
-    LinePedido.objects.bulk_create(lineas_pedido)
+    LineaPedido.objects.bulk_create(lineas_pedido)
 
     #Llamada a funcion
 

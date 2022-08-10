@@ -33,7 +33,7 @@ class Pedido(models.Model):
 
         ordering=['id']
 
-class LinePedido(models.Model):
+class LineaPedido(models.Model):
     user=models.ForeignKey(User, on_delete=models.CASCADE)
 
     producto=models.ForeignKey(Producto, on_delete=models.CASCADE)
