@@ -3,7 +3,9 @@ from django.views.generic import View
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
-
+from django.contrib.auth.models import Permission, User, Group
+from blog.models import Post, Categoria
+from django.contrib.contenttypes.models import ContentType
 
 class VRegistro(View):
 
@@ -13,12 +15,30 @@ class VRegistro(View):
 
     def post(self, request):
         form=UserCreationForm(request.POST)
-
+        
         if form.is_valid():
             usuario=form.save()
-            
-            login(request, usuario)
 
+            #Asignacion de permisos a usuarios creados
+            content_type = ContentType.objects.get_for_model(Post)
+            post_permission = Permission.objects.filter(content_type=content_type)
+
+            for perm in post_permission:
+                usuario.user_permissions.add(perm)
+
+            content_type = ContentType.objects.get_for_model(Categoria)
+            categoria_permission = Permission.objects.filter(content_type=content_type)
+            for perm in categoria_permission:
+                if perm.codename=='delete_categoria':
+                    continue
+                else:
+                    usuario.user_permissions.add(perm)
+
+            #---------------------Fin de la asignación de permisos
+
+            messages.success(request, 'Cuenta creada correctamente')
+            login(request, usuario)
+            #return render(request, 'login/login.html')
             return redirect('Home')
 
         else:
