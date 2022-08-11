@@ -3,6 +3,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from django.template.loader import render_to_string
 from carro.carro import Carro
+from pedidos.models import LineaPedido, Pedido
 from pedidos.models import Pedido,  LineaPedido
 from django.contrib import messages
 from django.utils.html import strip_tags
