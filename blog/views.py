@@ -24,4 +24,9 @@ def entrada(request, post_id):
 
     return render(request, "blog/entrada.html",{entrada:'entrada','posts':posts})
 
+def misEntradas(request):
+    
+
+    return render(request, "blog/misEntradas.html" )
+
 # Create your views here.
