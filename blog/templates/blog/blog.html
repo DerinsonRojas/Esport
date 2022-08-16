@@ -16,7 +16,20 @@
         {% endfor %}
 
     </div>
-    
+        <!--Todo este estilo inline debe reemplazarse-->
+        <div style="width: 400px;display: flex;
+        justify-content: center;
+        align-items: center; margin: auto;">
+            {% if request.user.is_authenticated %}
+
+            <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Ver mis entradas de blog</a>
+
+            {% else %}
+
+              <div class='alert alert-danger text-center'>Haz login para escribir en el blog</div>
+
+            {% endif %}
+          </div>
 </section>
 
     {% for post in posts %}
