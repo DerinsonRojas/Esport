@@ -1,0 +1,37 @@
+  
+<!-- Este div tiene el enlace me lleva al crud de creación de nuevos post-->
+<div style="width: 400px;display: flex; justify-content: center; align-items: center; margin: auto;">  
+    <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Crea un nuevo post</a>
+  </div>
+
+<!--Esta es el área para la lista de posts por usuarios -->
+
+<div class="table-responsive" style="background-color: rgb(173, 173, 215); width: 700px; border-radius: 20px;margin: auto;">  
+{% for post in posts %}
+{% if post.autor.id != user.id %}
+{% else %}
+<table class="table">
+<tbody>
+  <tr>
+    <th class="action-checkbox" scope="row">
+      <input type="checkbox" name="" value="">
+    </th>
+    <td>  {{ post.titulo }}</td>
+    <td style="text-align:right;" scope="row"><a href="{% url 'valordelnameentrada' post.id  %}">Leer</a></td>
+    <td style="text-align:right;" scope="row"><a href="#">Modificar</a></td>
+  </tr>
+</tbody>
+</table>
+{% endif %}
+{% endfor %}
+
+</div>
+<div class='col-md-5 md-3' style="margin: auto;"> 
+  <label for="accion">Acción</label>
+  <select class="custom-select d-block w-100" id="accion" required>
+  <option value>---------</option>
+  <option>Eliminar</option>
+</select>
+<button type="submit" class="button" title="Ejecutar la acción seleccionada" name="index" value="0" style="border-radius: 4px;">Ir</button>
+
+</div>

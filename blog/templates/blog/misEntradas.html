@@ -17,19 +17,15 @@
       {% endfor %}
 
   </div>
-  
-        <!--Este div tiene el enlace me lleva al crud de creación de uevos post-->
-          <div style="width: 400px;display: flex; justify-content: center; align-items: center; margin: auto;">  
-                <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Crea un nuevo post</a>
-          </div>
-
+{% include "blog/articulos/listaArticulos.html" %}
+  <!--Esta es el área para la lista de posts  con imagen, contenido y descripcion -->
   {% for post in posts %}
 
     {% if request.user == post.autor %}
 <section class="page-section clearfix">
     <div class="container">
       <div class="intro">
-        <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{post.imagen.url}}" alt="" style="width: 40%;">
+        <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{post.imagen.url}}" alt="" style="width: 20%;">
         
         <div class="intro-text left-0 text-center bg-faded p-5 rounded">
           <h2 class="section-heading mb-4" >
@@ -54,25 +50,12 @@
       </div>
     </div>
   </section> 
-  {% else %}
-
-  <p></p> 
-
+  {% else %} 
+<!-- Si no coincide el usuario y el autor no se inprime nada -->
   {% endif %}
   {% endfor %}            
 
 
-<!--Código de prueba para presentar los artículos existentes
-ID del Usuario Actual: {{user.id}}<br>
-{% for post in posts %}
-  {% if post.autor.id != user.id %}
-  
-  {% else %}
-
-  ID de usuarios con post:  {{post.autor.id}} <br>
-{% endif %}
-{% endfor %}
--->
 {% endblock %}
 
 
