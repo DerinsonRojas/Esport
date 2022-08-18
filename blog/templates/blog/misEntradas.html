@@ -1,58 +1,78 @@
-{% extends "gestionResgistroUsuarios/base.html" %}
+{% extends 'gestionResgistroUsuarios/base.html' %}
 
 {% load static %}
 
 {% block content %}
 <!-- Este sección muestra las categorías debajo del menú -->
-  <section><!-- Este sección muestra las categorías debajo del menú -->
-    <div style="width:75%; margin: auto; color: rgb(191, 202, 199); text-align: center;">
-        Categorías: 
-            {% for categoria in posts.categorias.all %}
 
-        {{categoria.nombre}}&nbsp; &nbsp;
+<section>
+  <div style="width:75%; margin: auto; color: rgb(191, 202, 199); text-align: center;">
+      Categorías: 
+      {% for post in posts %}
+          {% for categoria in post.categorias.all %}
 
-        {% endfor %}
+      <a href="{% url 'categoria' categoria.id %}" class="linksCategorias"> {{categoria.nombre}}</a>&nbsp; &nbsp;
 
-    </div>
-</section>
+          {% endfor %}
+      {% endfor %}
 
-<!--
-    <section class="page-section clearfix">
-        <div class="container">
-          <div class="intro">
-           
-            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{posts.imagen.url}}" alt="" style="width: 20%;">
-            <div class="intro-text left-0 text-center bg-faded p-5 rounded">
-              <h2 class="section-heading mb-4" >
-                <span class="section-heading-lower">{{posts.titulo}}</span>
-                <span class="section-heading-upper">{{posts.descripcion}}</span>
-                
-                                
-              </h2>
-              
-              <div style="text-align: left; font-size: 0.9em;">
-                Autor: {{posts.autor}}<br>
-
-              </div>
-            
-            </div>
-            
+  </div>
+  
+        <!--Este div tiene el enlace me lleva al crud de creación de uevos post-->
+          <div style="width: 400px;display: flex; justify-content: center; align-items: center; margin: auto;">  
+                <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Crea un nuevo post</a>
           </div>
-          
+
+  {% for post in posts %}
+
+    {% if request.user == post.autor %}
+<section class="page-section clearfix">
+    <div class="container">
+      <div class="intro">
+        <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{post.imagen.url}}" alt="" style="width: 40%;">
+        
+        <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+          <h2 class="section-heading mb-4" >
+            <span class="section-heading-lower">{{ post.titulo }}</span>
+            <span class="section-heading-upper">{{ post.descripcion }}</span>
+            <a href="{% url 'valordelnameentrada' post.id  %}"><span class="linksCategorias" style="font-size: 20px;">Play</span></a>
+                       
+          </h2>
+            <div style="text-align: left; font-size: 0.9em;">
+                Autor: {{ post.autor }}<br>
+
+                {% for categoria in post.categorias.all %}
+
+                    Categoría: {{ categoria.nombre }}<br>
+                
+
+                {% endfor %}
+             
+                
+             </div>
         </div>
-     </section>
+      </div>
+    </div>
+  </section> 
+  {% else %}
 
-     <section class="page-section clearfix">  
-        <div class="container">
-           <p style="color:aliceblue"> {{posts.contenido}}</p>
-        </div> 
-      </section>-->
-<!-- Este scrip sirve para hacer pruebas
-<div><p>
-  <h2 style="color:white;">{{posts.titulo}}</h2>
-  <p style="color:white;">{{posts.contenido}}</p>
-  <p> <img src="{{post.imagen.url}}"> </p>
+  <p></p> 
 
-</p></div>
+  {% endif %}
+  {% endfor %}            
+
+
+<!--Código de prueba para presentar los artículos existentes
+ID del Usuario Actual: {{user.id}}<br>
+{% for post in posts %}
+  {% if post.autor.id != user.id %}
+  
+  {% else %}
+
+  ID de usuarios con post:  {{post.autor.id}} <br>
+{% endif %}
+{% endfor %}
 -->
 {% endblock %}
+
+
