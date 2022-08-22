@@ -2,6 +2,7 @@ from django.shortcuts import render
 from blog.models import Post, Categoria
 
 
+
 def blog(request):
 
     posts=Post.objects.all()
@@ -24,4 +25,11 @@ def entrada(request, post_id):
 
     return render(request, "blog/entrada.html",{entrada:'entrada','posts':posts})
 
+def misEntradas(request):
+    
+    posts=Post.objects.all()
+
+    categoria=Categoria.objects.all()    
+
+    return render(request, "blog/misEntradas.html",{'posts':posts,'categoria':categoria})
 # Create your views here.
