@@ -6,8 +6,9 @@
 {% block content %}
 
 <div style="width:50%; margin:auto">
-  <form action="{% url 'addPost' %}" method="post" style="color:aliceblue;">
+  <form action="." method="POST" enctype="multipart/form-data" style="color:aliceblue;">
     {% csrf_token %}
+
     {{form|crispy}} {{form2|crispy}}
     
     <input type="submit" value="Añadir post" />

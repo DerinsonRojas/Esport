@@ -5,13 +5,22 @@ from django.views.generic import ListView
 from .models import CategoriaForm, Post, PostForm 
 
 def add_post(request):
-    form = PostForm() # Bound form
-    form2 = CategoriaForm()
+    form = PostForm(request.POST,request.FILES) # Bound form
+    form2 = CategoriaForm(request.POST)
+
+    if form.is_valid():
+        form.save()
+        return redirect('misEntradas')
+
     return render(request, 'blog/addPost.html', {'form': form, 'form2':form2})
 
-def mod_post(request):
-    entrada=Post.objects.get(pk=4)
-    form=PostForm(instance=entrada) 
+def mod_post(request,post_id):
+    entrada=Post.objects.get(pk=post_id)
+    form=PostForm(instance=entrada)
+    #form2 = CategoriaForm(instance=entrada)
+    
+     
+     
 
     return render(request, 'blog/modPost.html', {'form': form})
 
@@ -39,9 +48,7 @@ def entrada(request, post_id):
 
     posts=Post.objects.get(id=post_id)
 
-    entrada=Post.objects.filter(id=post_id)
-
-    return render(request, "blog/entrada.html",{entrada:'entrada','posts':posts})
+    return render(request, "blog/entrada.html",{'posts':posts})
 
 def misEntradas(request):
     

@@ -13,12 +13,12 @@
 <table class="table">
 <tbody>
   <tr>
-    <th class="action-checkbox" scope="row">
+   <!-- <th class="action-checkbox" scope="row">
       <input type="checkbox" name="" value="">
-    </th>
+    </th>-->
     <td>  {{ post.titulo }}</td>
     <td style="text-align:right;" scope="row"><a href="{% url 'valordelnameentrada' post.id  %}">Leer</a></td>
-    <td style="text-align:right;" scope="row"><a href="#">Modificar</a></td>
+    <td style="text-align:right;" scope="row"><a href="{% url 'modPost' post.id %}">Modificar</a></td>
   </tr>
 </tbody>
 </table>
@@ -26,6 +26,7 @@
 {% endfor %}
 
 </div>
+<!--
 <div class='col-md-5 md-3' style="margin: auto;"> 
   <label for="accion">Acción</label>
   <select class="custom-select d-block w-100" id="accion" required>
@@ -35,3 +36,4 @@
 <button type="submit" class="button" title="Ejecutar la acción seleccionada" name="index" value="0" style="border-radius: 4px;">Ir</button>
 
 </div>
+-->
