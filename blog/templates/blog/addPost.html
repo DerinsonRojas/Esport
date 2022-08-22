@@ -1,0 +1,16 @@
+{% extends 'gestionResgistroUsuarios/base.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div style="width:50%; margin:auto">
+  <form action="{% url 'addPost' %}" method="post" style="color:aliceblue;">
+    {% csrf_token %}
+    {{form|crispy}} {{form2|crispy}}
+    
+    <input type="submit" value="Añadir post" />
+</form>
+</div>
+{% endblock %}

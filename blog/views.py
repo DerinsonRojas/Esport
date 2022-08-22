@@ -2,22 +2,22 @@ from django.shortcuts import render, redirect
 from blog.models import Post, Categoria
 from django.views.generic import ListView
 
-from .models import Post 
+from .models import CategoriaForm, Post, PostForm 
 
 def add_post(request):
-    if request.method == 'POST': # si el usuario está enviando el formulario con datos
-        form = Post(request.POST) # Bound form
-        if form.is_valid():
-            new_post = form.save() # Guardar los datos en la base de datos
+    form = PostForm() # Bound form
+    form2 = CategoriaForm()
+    return render(request, 'blog/addPost.html', {'form': form, 'form2':form2})
 
-            return redirect(("blog/misEntradas.html"))
-    else:
-        form = Post() # Unbound form
+def mod_post(request):
+    entrada=Post.objects.get(pk=4)
+    form=PostForm(instance=entrada) 
 
-    return render(request, 'blog/persona_form.html', {'form': form})
+    return render(request, 'blog/modPost.html', {'form': form})
 
 class BlogList(ListView):
     model=Post
+    
 
 
 

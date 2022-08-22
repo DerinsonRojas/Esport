@@ -1,10 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.forms import ModelForm
+from django.core.exceptions import NON_FIELD_ERRORS
+
 
 # Create your models here.
 
 class Categoria(models.Model):
-    nombre=models.CharField(max_length=50)
+    nombre=models.CharField(max_length=50,blank=True)
     created=models.DateTimeField(auto_now_add=True)
     updated=models.DateTimeField(auto_now_add=True)
 
@@ -33,3 +36,21 @@ class Post(models.Model):
 
     def __str__(self):
         return self.titulo
+
+class PostForm(ModelForm):
+    class Meta:
+        model=Post
+        fields=['titulo','descripcion','contenido','imagen','autor','categorias']
+
+class CategoriaForm(ModelForm):
+    class Meta:
+        model=Categoria
+        fields=['nombre']
+
+class ArticleForm(ModelForm):
+    class Meta:
+        error_messages = {
+            NON_FIELD_ERRORS: {
+                'unique_together': "%(model_name)s's %(field_labels)s are not unique.",
+            }
+        }

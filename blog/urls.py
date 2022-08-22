@@ -7,7 +7,8 @@ urlpatterns = [
     path("entrada/<int:post_id>/", views.entrada, name="valordelnameentrada"),
     path("misEntradas/", views.misEntradas, name="misEntradas"),
     path("pruebaFormulario/", views.BlogList.as_view(), name='bloglist'),
-    path("add/",views.add_post,name='add_post')
+    path("addPost/",views.add_post,name='addPost'),
+    path("modPost/",views.mod_post,name='modPost'),
 
 
 
