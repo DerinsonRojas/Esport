@@ -1,0 +1,14 @@
+{% extends 'gestionResgistroUsuarios/base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+  <form action="{% url 'add_post' %}" method="post">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="Añadir persona" />
+</form>
+
+{% endblock %}

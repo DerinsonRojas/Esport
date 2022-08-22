@@ -17,7 +17,14 @@
       {% endfor %}
 
   </div>
+
+  <!--Selector de articulos publicados por el usuario (leer, modificar) -->  
 {% include "blog/articulos/listaArticulos.html" %}
+
+
+
+
+
   <!--Esta es el área para la lista de posts  con imagen, contenido y descripcion -->
   {% for post in posts %}
 
@@ -52,6 +59,7 @@
   </section> 
   {% else %} 
 <!-- Si no coincide el usuario y el autor no se inprime nada -->
+<span></span>
   {% endif %}
   {% endfor %}            
 
