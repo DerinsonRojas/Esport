@@ -8,6 +8,7 @@ def add_post(request):
     form = PostForm(request.POST,request.FILES) # Bound form
     form2 = CategoriaForm(request.POST)
 
+
     if form.is_valid():
         form.save()
         return redirect('misEntradas')
@@ -16,11 +17,11 @@ def add_post(request):
 
 def mod_post(request,post_id):
     entrada=Post.objects.get(pk=post_id)
-    form=PostForm(instance=entrada)
+    form=PostForm(request.POST or None, instance=entrada)
+    if request.POST and form.is_valid():
+        form.save()
+        return redirect('misEntradas')
     #form2 = CategoriaForm(instance=entrada)
-    
-     
-     
 
     return render(request, 'blog/modPost.html', {'form': form})
 
