@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.forms import ModelForm
 from django.core.exceptions import NON_FIELD_ERRORS
+import os
 
 
 # Create your models here.
@@ -29,6 +30,11 @@ class Post(models.Model):
     
     created=models.DateTimeField(auto_now_add=True)
     updated=models.DateTimeField(auto_now_add=True)
+
+    def delete(self, *args,**kwargs):
+        if os.path.isfile(self.imagen.path):
+                os.remove(self.imagen.path)
+        super(Post,self).delete(*args,**kwargs)
 
     class Meta:
         verbose_name='post'

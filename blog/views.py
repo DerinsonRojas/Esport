@@ -1,7 +1,27 @@
 from django.shortcuts import render, redirect
 from blog.models import Post, Categoria
-from django.views.generic import ListView
+from django.urls import reverse
 from .models import CategoriaForm, Post, PostForm 
+from django.contrib import messages
+
+
+def vista_delete(request, post_id):
+    
+    posts=Post.objects.get(pk=post_id)
+    try:
+        post=Post.objects.get(pk=post_id)
+    except Post.DoesNotExist:
+        messages.error(request,'El post que quieres eliminar no existe')
+    
+    if post.autor!=request.user:
+        messages.error("No eres el autor de este post")
+        return redirect('blog')
+    
+    post.delete()
+    messages.success(request, f'El post {post.titulo} ha sido eliminado!')
+    #exito=reverse_lazy('blog')
+    return reverse('blog/blog.html')
+
 
 
 def add_post(request):
@@ -14,24 +34,20 @@ def add_post(request):
         new_post=form.save(commit=False)
         new_post.autor = poster
         new_post.save()
+        #messages.add_message(request,"El post se ha agregado con exito")
         return redirect('misEntradas')
 
     return render(request, 'blog/addPost.html', {'form': form})
 
 def mod_post(request,post_id):
-    entrada=Post.objects.get(pk=post_id)
-    form=PostForm(request.POST or None, instance=entrada)
+    post=Post.objects.get(pk=post_id)
+    form=PostForm(request.POST or None, instance=post)
     if request.POST and form.is_valid():
         form.save()
         return redirect('misEntradas')
     #form2 = CategoriaForm(instance=entrada)
 
-    return render(request, 'blog/modPost.html', {'form': form})
-
-class BlogList(ListView):
-    model=Post
-    
-
+    return render(request, 'blog/modPost.html', {'form': form, 'post':post})
 
 
 def blog(request):
