@@ -9,11 +9,9 @@
   <form action="." method="POST" enctype="multipart/form-data" style="color:aliceblue;">
     {% csrf_token %}
 
-    {{form|crispy}} {{form2|crispy}}
+    {{form3|crispy}}
     
     <input type="submit" value="Añadir post" />
 </form>
 </div>
-
-<span>{{request.user}} {{request.user.id}}</span>
 {% endblock %}

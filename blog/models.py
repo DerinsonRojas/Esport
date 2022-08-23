@@ -40,7 +40,8 @@ class Post(models.Model):
 class PostForm(ModelForm):
     class Meta:
         model=Post
-        fields=['titulo','descripcion','contenido','imagen','autor','categorias']
+        fields=['titulo','descripcion','contenido','imagen','categorias']
+        
 
 class CategoriaForm(ModelForm):
     class Meta:
