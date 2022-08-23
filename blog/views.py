@@ -1,5 +1,36 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from blog.models import Post, Categoria
+from django.views.generic import ListView
+from .models import CategoriaForm, Post, PostForm 
+
+
+def add_post(request):
+    poster=request.user
+
+    form = PostForm(request.POST,request.FILES) # Bound form
+    #form2 = CategoriaForm(request.POST)
+
+    if form.is_valid():
+        new_post=form.save(commit=False)
+        new_post.autor = poster
+        new_post.save()
+        return redirect('misEntradas')
+
+    return render(request, 'blog/addPost.html', {'form': form})
+
+def mod_post(request,post_id):
+    entrada=Post.objects.get(pk=post_id)
+    form=PostForm(request.POST or None, instance=entrada)
+    if request.POST and form.is_valid():
+        form.save()
+        return redirect('misEntradas')
+    #form2 = CategoriaForm(instance=entrada)
+
+    return render(request, 'blog/modPost.html', {'form': form})
+
+class BlogList(ListView):
+    model=Post
+    
 
 
 
@@ -21,9 +52,7 @@ def entrada(request, post_id):
 
     posts=Post.objects.get(id=post_id)
 
-    entrada=Post.objects.filter(id=post_id)
-
-    return render(request, "blog/entrada.html",{entrada:'entrada','posts':posts})
+    return render(request, "blog/entrada.html",{'posts':posts})
 
 def misEntradas(request):
     
