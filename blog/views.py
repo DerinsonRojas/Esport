@@ -1,28 +1,15 @@
+from re import template
 from django.shortcuts import render, redirect
 from blog.models import Post, Categoria
-from django.urls import reverse
 from .models import CategoriaForm, Post, PostForm 
 from django.contrib import messages
+from django.views.generic import DeleteView
+from django.urls import reverse_lazy
 
-
-def vista_delete(request, post_id):
-    
-    posts=Post.objects.get(pk=post_id)
-    try:
-        post=Post.objects.get(pk=post_id)
-    except Post.DoesNotExist:
-        messages.error(request,'El post que quieres eliminar no existe')
-    
-    if post.autor!=request.user:
-        messages.error("No eres el autor de este post")
-        return redirect('blog')
-    
-    post.delete()
-    messages.success(request, f'El post {post.titulo} ha sido eliminado!')
-    #exito=reverse_lazy('blog')
-    return reverse('blog/blog.html')
-
-
+class DeletePostView(DeleteView):
+    model=Post
+    template_name='blog/delete_post.html'
+    success_url=reverse_lazy('misEntradas')
 
 def add_post(request):
     poster=request.user
