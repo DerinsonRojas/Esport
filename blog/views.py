@@ -39,7 +39,7 @@ def mod_post(request,post_id):
 
 def blog(request):
 
-    posts=Post.objects.all()
+    posts=Post.objects.all().order_by('-created')
 
     return render(request, "blog/blog.html",{'posts':posts} )
 
