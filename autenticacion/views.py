@@ -47,23 +47,6 @@ class VRegistro(View):
                 messages.error(request, form.error_messages[msg])
 
             return render(request, 'registro/registro.html', {'form':form})
-'''
-
-def VRegistro(request):  
-    if request.POST == 'POST':  
-        form = CustomUserCreationForm()  
-        if form.is_valid():  
-            form.save()
-            print('Funnciona')
-        return redirect('Home')  
-    else:
-        print('No Funnciona')
-        form = CustomUserCreationForm()
-        contexto = { 'form':form}    
-        return render(request, 'registro/registro.html',contexto)  
-      
-'''     
-
 
 def cerrar_sesion(request):
     logout(request)

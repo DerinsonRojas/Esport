@@ -1,0 +1,20 @@
+{% extends 'gestionResgistroUsuarios/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<h2 style="color:aliceblue;">¿Seguro qué quieres borrar el post: {{post.titulo}}?</h2>
+
+<br></br>
+<br>
+<div class="form-group">
+  <form method="POST">
+    {% csrf_token %}
+
+    <button class="btn btn-secundary">Eliminar</button></br>
+  </form>
+</div>
+
+
+{% endblock %}

@@ -1,8 +1,15 @@
+from re import template
 from django.shortcuts import render, redirect
 from blog.models import Post, Categoria
-from django.views.generic import ListView
 from .models import CategoriaForm, Post, PostForm 
+from django.contrib import messages
+from django.views.generic import DeleteView
+from django.urls import reverse_lazy
 
+class DeletePostView(DeleteView):
+    model=Post
+    template_name='blog/delete_post.html'
+    success_url=reverse_lazy('misEntradas')
 
 def add_post(request):
     poster=request.user
@@ -14,24 +21,20 @@ def add_post(request):
         new_post=form.save(commit=False)
         new_post.autor = poster
         new_post.save()
+        #messages.add_message(request,"El post se ha agregado con exito")
         return redirect('misEntradas')
 
     return render(request, 'blog/addPost.html', {'form': form})
 
 def mod_post(request,post_id):
-    entrada=Post.objects.get(pk=post_id)
-    form=PostForm(request.POST or None, instance=entrada)
+    post=Post.objects.get(pk=post_id)
+    form=PostForm(request.POST or None, instance=post)
     if request.POST and form.is_valid():
         form.save()
         return redirect('misEntradas')
     #form2 = CategoriaForm(instance=entrada)
 
-    return render(request, 'blog/modPost.html', {'form': form})
-
-class BlogList(ListView):
-    model=Post
-    
-
+    return render(request, 'blog/modPost.html', {'form': form, 'post':post})
 
 
 def blog(request):

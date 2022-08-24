@@ -5,12 +5,18 @@
 {% load crispy_forms_tags %}
 {% block content %}
 
+
 <div style="width:50%; margin:auto">
     <form action="." method="POST" enctype="multipart/form-data" style="color:aliceblue;">
     {% csrf_token %}
     {{form|crispy}} {{form2|crispy}}
     
     <input type="submit" value="Enviar" />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="{% url 'delete_post' post.pk %}"><button type="button" class="btn btn-warning">Eliminar</button></a>
+    </button>
 </form>
 </div>
+
+
 {% endblock %}
