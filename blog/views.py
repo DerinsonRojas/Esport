@@ -1,4 +1,3 @@
-from re import template
 from django.shortcuts import render, redirect
 from blog.models import Post, Categoria
 from .models import CategoriaForm, Post, PostForm 

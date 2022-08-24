@@ -3,26 +3,7 @@
 {% load static %}
 
 {% block content %}
-<!-- Este sección muestra las categorías debajo del menú -->
-
-<section>
-  <div style="width:75%; margin: auto; color: rgb(191, 202, 199); text-align: center;">
-      Categorías: 
-      {% for post in posts %}
-          {% for categoria in post.categorias.all %}
-
-      <a href="{% url 'categoria' categoria.id %}" class="linksCategorias"> {{categoria.nombre}}</a>&nbsp; &nbsp;
-
-          {% endfor %}
-      {% endfor %}
-
-  </div>
-
-  <!--Selector de articulos publicados por el usuario (leer, modificar) -->  
 {% include "blog/articulos/listaArticulos.html" %}
-
-
-
 
 
   <!--Esta es el área para la lista de posts  con imagen, contenido y descripcion -->
@@ -47,6 +28,7 @@
                 {% for categoria in post.categorias.all %}
 
                     Categoría: {{ categoria.nombre }}<br>
+                    <small>{{ post.created }}</small>
                 
 
                 {% endfor %}
@@ -61,8 +43,26 @@
 <!-- Si no coincide el usuario y el autor no se inprime nada -->
 <span></span>
   {% endif %}
+ 
   {% endfor %}            
 
+  
+<!-- Este sección muestra las categorías debajo del menú -->
+
+<section>
+  <div style="width:75%; margin: auto; color: rgb(191, 202, 199); text-align: center;">
+      Categorías: 
+      {% for post in posts %}
+          {% for categoria in post.categorias.all %}
+
+      <a href="{% url 'categoria' categoria.id %}" class="linksCategorias"> {{categoria.nombre}}</a>&nbsp; &nbsp;
+
+          {% endfor %}
+      {% endfor %}
+
+  </div>
+
+  <!--Selector de articulos publicados por el usuario (leer, modificar) --> 
 
 {% endblock %}
 
