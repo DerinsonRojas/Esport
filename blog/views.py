@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from blog.models import Post, Categoria
 from .models import CategoriaForm, Post, PostForm 
+from django.contrib import messages
 from django.views.generic import DeleteView
 from django.urls import reverse_lazy
 
@@ -25,15 +26,10 @@ def add_post(request):
     return render(request, 'blog/addPost.html', {'form': form})
 
 def mod_post(request,post_id):
-
     post=Post.objects.get(pk=post_id)
-
     form=PostForm(request.POST or None, instance=post)
-
     if request.POST and form.is_valid():
-
         form.save()
-
         return redirect('misEntradas')
     #form2 = CategoriaForm(instance=entrada)
 
@@ -67,19 +63,4 @@ def misEntradas(request):
     categoria=Categoria.objects.all()    
 
     return render(request, "blog/misEntradas.html",{'posts':posts,'categoria':categoria})
-
-def nuevaCat(request):
-
-    form = CategoriaForm(request.POST,request.FILES)
-
-    if request.method=='POST':
-
-        if form.is_valid():
-
-            form.save()
-    
-        return redirect('addPost')
-        
-    
-    return render(request, 'blog/nuevacat.html', {'categoria':categoria, 'form':form})
 # Create your views here.

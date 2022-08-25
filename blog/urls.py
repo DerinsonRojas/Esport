@@ -10,5 +10,4 @@ urlpatterns = [
     path("entrada/<int:post_id>/", views.entrada, name="valordelnameentrada"),
     path("modPost/<int:post_id>/",views.mod_post,name='modPost'),
     path("delete_post/<int:pk>/", DeletePostView.as_view(),name='delete_post'),
-    path("nuevacat/", views.nuevaCat ,name='nuevaCat'),
 ]
