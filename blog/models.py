@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.forms import ModelForm
 from django.core.exceptions import NON_FIELD_ERRORS
 import os
+from django import forms
 
 
 # Create your models here.
@@ -50,7 +51,6 @@ class PostForm(ModelForm):
     class Meta:
         model=Post
         fields=['titulo','descripcion','contenido','imagen','categorias']
-        
 
 class CategoriaForm(ModelForm):
     class Meta:
