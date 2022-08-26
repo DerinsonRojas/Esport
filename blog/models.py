@@ -39,6 +39,9 @@ class Post(models.Model):
     class Meta:
         verbose_name='post'
         verbose_name_plural='posts'
+        # sort by "fecha" in descending order unless
+        # overridden in the query with order_by()
+        ordering = ['-created']
 
     def __str__(self):
         return self.titulo

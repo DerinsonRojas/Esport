@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block content %}
-
+{% if post.autor == user %}
 <h2 style="color:aliceblue;">¿Seguro qué quieres borrar el post: {{post.titulo}}?</h2>
 
 <br></br>
@@ -15,6 +15,9 @@
     <button class="btn btn-secundary">Eliminar</button></br>
   </form>
 </div>
+{% else %}
+<p style="color:aliceblue;" >NO TIENES PERMISO PARA MODIFICAR ESTE POST, VUELVE ATRAS</p>
+{% endif %}
 
 
 {% endblock %}

@@ -4,18 +4,6 @@
 
 {% block content %}
 
-<section><!-- Este sección muestra las categorías debajo del menú -->
-    <div style="width:75%; margin: auto; color: rgb(191, 202, 199); text-align: center;">
-        Categorías: 
-        {% for post in posts %}
-            {% for categoria in post.categorias.all %}
-
-        <a href="{% url 'categoria' categoria.id %}" class="linksCategorias"> {{categoria.nombre}}</a>&nbsp; &nbsp;
-
-            {% endfor %}
-        {% endfor %}
-
-    </div>
         <!--Todo este estilo inline debe reemplazarse-->
         <div style="width: 400px;display: flex;
         justify-content: center;
@@ -43,15 +31,17 @@
               <h2 class="section-heading mb-4" >
                 <span class="section-heading-lower">{{post.titulo}}</span>
                 <span class="section-heading-upper">{{post.descripcion}}</span>
-                <a href="{% url 'valordelnameentrada' post.id  %}"><span class="linksCategorias" style="font-size: 20px;">Play</span></a>
+                <a href="{% url 'valordelnameentrada' post.id  %}"><span class="linksCategorias" style="font-size: 20px;">Leer más</span></a>
                            
               </h2>
                 <div style="text-align: left; font-size: 0.9em;">
                     Autor: {{post.autor}}<br>
+                    
 
                     {% for categoria in post.categorias.all %}
 
                         Categoría: {{categoria.nombre}}<br>
+                        <small>{{ post.created }}</small>
                        
 
                     {% endfor %}
@@ -73,5 +63,17 @@
     {% endfor %}
 
 
+    <section><!-- Este sección muestra las categorías debajo del menú -->
+      <div style="width:75%; margin: auto; color: rgb(191, 202, 199); text-align: center;">
+          Categorías: 
+          {% for post in posts %}
+              {% for categoria in post.categorias.all %}
+  
+          <a href="{% url 'categoria' categoria.id %}" class="linksCategorias"> {{categoria.nombre}}</a>&nbsp; &nbsp;
+  
+              {% endfor %}
+          {% endfor %}
+  
+      </div>
 
 {% endblock %}

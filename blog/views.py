@@ -1,4 +1,3 @@
-from re import template
 from django.shortcuts import render, redirect
 from blog.models import Post, Categoria
 from .models import CategoriaForm, Post, PostForm 
@@ -39,7 +38,7 @@ def mod_post(request,post_id):
 
 def blog(request):
 
-    posts=Post.objects.all()
+    posts=Post.objects.all().order_by('-created')
 
     return render(request, "blog/blog.html",{'posts':posts} )
 

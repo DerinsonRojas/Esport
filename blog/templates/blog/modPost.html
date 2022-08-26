@@ -5,7 +5,7 @@
 {% load crispy_forms_tags %}
 {% block content %}
 
-
+{% if post.autor == user %}
 <div style="width:50%; margin:auto">
     <form action="." method="POST" enctype="multipart/form-data" style="color:aliceblue;">
     {% csrf_token %}
@@ -17,6 +17,8 @@
     </button>
 </form>
 </div>
-
+{% else %}
+<p style="color:aliceblue;" >NO TIENES PERMISO PARA MODIFICAR ESTE POST, VUELVE ATRAS</p>
+{% endif %}
 
 {% endblock %}
