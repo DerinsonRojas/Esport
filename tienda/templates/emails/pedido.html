@@ -9,7 +9,12 @@
 <body>
    Hola {{nombreusuario}}<br/>
    Nº de pedido: {{pedido.id}}<br/>
-   Email del usuario: {{emailusuario}}<br/>
-   Lineas de pedido: {{lineas_pedido}} 
+   Pedido:<br>
+   {% for pedido in lineas_pedido %}
+
+    {{pedido}} <br>
+
+   {% endfor %}
+
 </body>
 </html>
