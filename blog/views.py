@@ -64,3 +64,17 @@ def misEntradas(request):
 
     return render(request, "blog/misEntradas.html",{'posts':posts,'categoria':categoria})
 # Create your views here.
+def nuevaCat(request):
+
+    form = CategoriaForm(request.POST,request.FILES)
+
+    if request.method=='POST':
+
+        if form.is_valid():
+
+            form.save()
+    
+        return redirect('addPost')
+        
+    
+    return render(request, 'blog/nuevacat.html', {'categoria':categoria, 'form':form})
