@@ -1,3 +1,18 @@
+<br>
+{% if messages %}
+{% for mensaje in messages %}
+
+    <span class="alert alert-{{mensaje.tags}}">
+
+    {{mensaje}}
+
+    </span>
+
+
+    {% endfor %}
+
+    {% endif %}
+    <br><br>
 <table class="table table-bordered" style="color:white;">
 
     <thead>
