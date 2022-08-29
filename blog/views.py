@@ -20,7 +20,8 @@ def add_post(request):
         new_post=form.save(commit=False)
         new_post.autor = poster
         new_post.save()
-        #messages.add_message(request,"El post se ha agregado con exito")
+        messages.success(request, "El post se ha agregado con éxito")
+     
         return redirect('misEntradas')
 
     return render(request, 'blog/addPost.html', {'form': form})
@@ -30,6 +31,7 @@ def mod_post(request,post_id):
     form=PostForm(request.POST or None, instance=post)
     if request.POST and form.is_valid():
         form.save()
+        messages.success(request, "El post se ha modificado con éxito")
         return redirect('misEntradas')
     #form2 = CategoriaForm(instance=entrada)
 
