@@ -3,7 +3,23 @@
 <div style="width: 400px;display: flex; justify-content: center; align-items: center; margin: auto;">  
     <a href="{% url 'addPost' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Crea un nuevo post</a>
   </div>
+  <br>
+  <div  style="width: 400px;display: flex; justify-content: center; align-items: center; margin: auto;">
+  {% if messages %}
+  {% for mensaje in messages %}
 
+      <span class="alert alert-{{mensaje.tags}}">
+  
+      {{mensaje}}
+  
+      </span>
+  
+    
+      {% endfor %}
+  
+      {% endif %}
+      <br>
+    </div>
 <!--Esta es el área para la lista de posts por usuarios -->
 
 <div class="table-responsive" style="background-color: rgb(173, 173, 215); width: 700px; border-radius: 20px;margin: auto;">  
